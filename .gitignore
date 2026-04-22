@@ -1,0 +1,38 @@
+# dependências
+node_modules/
+
+# artifacts e cache do Hardhat
+artifacts/
+cache/
+
+# coverage
+coverage/
+coverage.json
+
+# arquivos de build/saída
+dist/
+out/
+
+# variáveis de ambiente
+.env
+.env.*
+!.env.example
+
+# logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# sistema/editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# typechain, se você passar a usar depois
+typechain-types/
+
+# relatórios opcionais
+gas-report.txt

@@ -1,0 +1,12 @@
+/* Based on https://github.com/tsconfig/bases/blob/501da2bcd640cf95c95805783e1012b992338f28/bases/node22.json */
+{
+  "compilerOptions": {
+    "target": "es2022",
+    "module": "es2022",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "types": ["node", "mocha", "chai"]
+  },
+  "include": ["test/**/*.ts", "scripts/**/*.ts", "hardhat.config.ts"]
+}
