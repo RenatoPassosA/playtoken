@@ -1,12 +1,12 @@
-import hre from "hardhat";
 
-const { ethers } = await hre.network.connect("localhost");
+import { network } from "hardhat";
+
+const { ethers } = await network.create();
 
 async function main() {
   const initialSupply = ethers.parseUnits("1000000", 18);
 
-  const Token = await ethers.getContractFactory("PlayToken");
-  const token = await Token.deploy(initialSupply);
+  const token = await ethers.deployContract("PlayToken", [initialSupply]);
   await token.waitForDeployment();
 
   console.log("PlayToken deployed to:", await token.getAddress());

@@ -36,3 +36,6 @@ typechain-types/
 
 # relatórios opcionais
 gas-report.txt
+
+#outputs
+indexer/output/

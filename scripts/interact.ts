@@ -1,6 +1,6 @@
-import hre from "hardhat";
+import { network } from "hardhat";
 
-const { ethers } = await hre.network.connect("localhost");
+const { ethers } = await network.create();
 
 async function printReceiptAndLogs(
   label: string,
@@ -42,7 +42,7 @@ async function printReceiptAndLogs(
 }
 
 async function main() {
-  const contractAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
+  const contractAddress = "0x5fbdb2315678afecb367f032d93f642f64180aa3";
   const [owner, alice, bob] = await ethers.getSigners();
 
   const token = await ethers.getContractAt("PlayToken", contractAddress);

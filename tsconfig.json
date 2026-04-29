@@ -8,5 +8,8 @@
     "skipLibCheck": true,
     "types": ["node", "mocha", "chai"]
   },
-  "include": ["test/**/*.ts", "scripts/**/*.ts", "hardhat.config.ts"]
+  "include": ["test/**/*.ts",
+    "scripts/**/*.ts",
+    "hardhat.config.ts",
+    "indexer/**/*.ts"],
 }
