@@ -13,6 +13,8 @@ async function main() {
 
   console.log("== Indexer ==");
   console.log("contract:", contractAddress);
+  console.log("status:", result.status);
+  console.log("message:", result.message);
   console.log("fromBlock:", result.fromBlock);
   console.log("latestBlock:", result.latestBlock);
   console.log("safeToBlock:", result.safeToBlock);

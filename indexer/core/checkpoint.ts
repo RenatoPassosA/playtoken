@@ -10,6 +10,7 @@ export async function loadCheckpoint(
   return readJsonFile<Checkpoint>(CHECKPOINT_FILE, {
     contractAddress,
     lastProcessedBlock: -1,
+    lastProcessedBlockHash: null,
     updatedAt: new Date().toISOString(),
     totalIndexedEvents: 0,
     finalityMargin,
@@ -33,7 +34,12 @@ export function validateCheckpoint(
         "O checkpoint atual pertence a outro endereço de contrato.",
         `Checkpoint: ${checkpoint.contractAddress}`,
         `Atual:      ${contractAddress}`,
-        "Apague indexer/output/ e rode novamente.",
+        "",
+        "Isso normalmente significa que você mudou PLAYTOKEN_ADDRESS,",
+        "mas ainda está usando arquivos antigos em indexer/output/.",
+        "",
+        "Solução segura para ambiente local:",
+        "apague indexer/output/ e rode o indexador novamente.",
       ].join("\n"),
     );
   }

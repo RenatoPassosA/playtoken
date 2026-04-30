@@ -10,7 +10,10 @@ async function main() {
   const contractAddress = requireContractAddress(config);
 
   console.log("== PlayToken watch mode ==");
+  console.log("contract:", contractAddress);
   console.log("pollIntervalMs:", config.pollIntervalMs);
+  console.log("finalityMargin:", config.finalityMargin);
+  console.log("tokenDecimals:", config.tokenDecimals);
 
   while (true) {
     try {
@@ -23,6 +26,8 @@ async function main() {
       console.log("\n== Watch cycle ==");
       console.log("time:", new Date().toISOString());
       console.log("contract:", contractAddress);
+      console.log("status:", result.status);
+      console.log("message:", result.message);
       console.log("fromBlock:", result.fromBlock);
       console.log("latestBlock:", result.latestBlock);
       console.log("safeToBlock:", result.safeToBlock);
@@ -30,7 +35,9 @@ async function main() {
       console.log("newEvents:", result.newEvents.length);
       console.log("totalEvents:", result.allEvents.length);
     } catch (error) {
-      console.error("Erro no ciclo do watch:");
+      console.error("\n== Watch cycle error ==");
+      console.error("time:", new Date().toISOString());
+      console.error("message: O ciclo do watch falhou, mas o serviço continuará tentando.");
       console.error(error);
     }
 

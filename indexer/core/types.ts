@@ -58,9 +58,28 @@ export type IndexedEvent = IndexedTransfer | IndexedApproval;
 export type Checkpoint = {
   contractAddress: string;
   lastProcessedBlock: number;
+  lastProcessedBlockHash: string | null;
   updatedAt: string;
   totalIndexedEvents: number;
   finalityMargin: number;
+};
+
+export type CycleStatus =
+  | "indexed"
+  | "idle"
+  | "waiting_finality"
+  | "checkpoint_ahead_recovered"
+  | "chain_reset_recovered";
+
+export type CycleResult = {
+  status: CycleStatus;
+  message: string;
+  fromBlock: number | null;
+  latestBlock: number;
+  safeToBlock: number;
+  newEvents: IndexedEvent[];
+  allEvents: IndexedEvent[];
+  processed: boolean;
 };
 
 export type AddressSummary = {

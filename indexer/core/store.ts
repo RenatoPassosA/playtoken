@@ -1,5 +1,10 @@
-import { mkdir, writeFile } from "node:fs/promises";
-import { EVENTS_FILE, OUTPUT_DIR } from "./paths.js";
+import { mkdir, rm, writeFile } from "node:fs/promises";
+import {
+  BY_ADDRESS_DIR,
+  CHECKPOINT_FILE,
+  EVENTS_FILE,
+  OUTPUT_DIR,
+} from "./paths.js";
 import type { IndexedEvent } from "./types.js";
 import { compareEvents, eventKey, readJsonFile } from "./utils.js";
 
@@ -28,4 +33,15 @@ export async function mergeAndSaveEvents(
   await writeFile(EVENTS_FILE, JSON.stringify(allEvents, null, 2));
 
   return allEvents;
+}
+
+export async function resetIndexerOutput(): Promise<void> {
+  await mkdir(OUTPUT_DIR, { recursive: true });
+
+  await rm(EVENTS_FILE, { force: true });
+  await rm(CHECKPOINT_FILE, { force: true });
+  await rm(BY_ADDRESS_DIR, { recursive: true, force: true });
+
+  await mkdir(BY_ADDRESS_DIR, { recursive: true });
+  await writeFile(EVENTS_FILE, JSON.stringify([], null, 2));
 }
